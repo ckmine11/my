@@ -1,14 +1,14 @@
 pipeline { 
          agent any
            environment {
-        jenkins_server_url = "http://192.168.163.120:8080"
+        jenkins_server_url = "http://192.168.163.102:8080"
         notification_channel = 'devops'
         slack_url = 'https://hooks.slack.com/services/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'
         deploymentName = "web-server"
     containerName = "web-server"
     serviceName = "web-server"
-    imageName = "masternode.mine.com/holder/$JOB_NAME:v1.$BUILD_ID"
-     applicationURL="http://192.168.163.121"
+    imageName = "master.dns.com/devsecops/$JOB_NAME:v1.$BUILD_ID"
+     applicationURL="http://192.168.163.101"
     applicationURI="epps-smartERP/" 		   
 		   
         
@@ -65,7 +65,7 @@ pipeline {
        // echo 'Testing...'
       //  snykSecurity(
       //    snykInstallation: 'snyk',
-      //    snykTokenId: '4ccc3f60-b327-420b-8e0e-7eaf0521560c',
+      //    snykTokenId: 'bbe4c279-8455-48f7-aeaa-901144bd2a86',
           // place other parameters here
        // )
       }
