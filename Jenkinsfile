@@ -48,7 +48,7 @@ pipeline {
               steps {
         withSonarQubeEnv('sonar') {
           
-       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devsecops-pro -Dsonar.host.url=http://master.dns.com:9001 -Dsonar.login=sqa_39de4a0b5d1c77dcfa30ea052b0b34a338a98b03"
+       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devsec -Dsonar.host.url=http://master.dns.com:9001 -Dsonar.login=sqa_39de4a0b5d1c77dcfa30ea052b0b34a338a98b03"
         }
 		      timeout(time: 2, unit: 'HOURS') {
            script {
