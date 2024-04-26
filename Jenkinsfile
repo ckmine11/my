@@ -59,7 +59,7 @@ pipeline {
               }
               
               
-         stage('Synk-Test') {
+        stage('Synk-Test') {
       steps {
 	      snykSecurity failOnError: false, failOnIssues: false, projectName: 'holder', snykInstallation: 'snyk', snykTokenId: 'snyk'
        // echo 'Testing...'
@@ -69,7 +69,7 @@ pipeline {
           // place other parameters here
        // )
       }
-    }
+   }
               
               
               stage ('Vulnerability Scan - Docker ') {
