@@ -104,11 +104,11 @@ pipeline {
                                      }
                        }
                        
-                       stage ("Slack-Notify"){
-                         steps {
-                            slackSend channel: 'devops-pipeline', message: 'deployment successfully'
-                         }
-                       }
+                     //  stage ("Slack-Notify"){
+                    //     steps {
+                    //        slackSend channel: 'devops-pipeline', message: 'deployment successfully'
+                   //      }
+                   //    }
 
     stage ('Regitsry Approve') {
       steps {
