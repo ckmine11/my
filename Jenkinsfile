@@ -67,7 +67,7 @@ pipeline {
          snykInstallation: 'snyk',
          snykTokenId: 'bbe4c279-8455-48f7-aeaa-901144bd2a86'
           // place other parameters here
-       // )
+        )
       }
    }
               
