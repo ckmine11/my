@@ -61,13 +61,13 @@ pipeline {
               
         stage('Synk-Test') {
       steps {
-	      snykSecurity failOnError: false, failOnIssues: false, projectName: 'my'   //, snykInstallation: 'snyk', snykTokenId: 'snyk'
+	      snykSecurity failOnError: false, failOnIssues: false, projectName: 'my', snykInstallation: 'snyk', snykTokenId: 'bbe4c279-8455-48f7-aeaa-901144bd2a86'
        // echo 'Testing...'
-        snykSecurity(
-         snykInstallation: 'snyk',
-         snykTokenId: 'bbe4c279-8455-48f7-aeaa-901144bd2a86'
+      //  snykSecurity(
+       //  snykInstallation: 'snyk',
+        // snykTokenId: 'bbe4c279-8455-48f7-aeaa-901144bd2a86'
           // place other parameters here
-        )
+      //  )
       }
    }
               
