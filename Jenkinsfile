@@ -22,13 +22,13 @@ pipeline {
     stages { 
         stage('Build Checkout') { 
             steps { 
-              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ckmine/holder.git']]])
+              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ckmine11/my.git']]])
          }
         }
         stage('Build Now') { 
             steps { 
               
-                  dir("/var/lib/jenkins/workspace/mine-project") {
+                  dir("/var/lib/jenkins/workspace/devsecops-pro") {
                     sh 'mvn -version'
                     sh 'mvn clean install'
                       
@@ -48,7 +48,7 @@ pipeline {
               steps {
         withSonarQubeEnv('sonar') {
           
-       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=mine-project -Dsonar.host.url=http://192.168.163.120:9000 -Dsonar.login=sqa_9f553c36e5c2d24dadd1794fc87007c2eb1e2a1e"
+       sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devsecops-pro -Dsonar.host.url=http://master.dns.com:9001 -Dsonar.login=sqa_39de4a0b5d1c77dcfa30ea052b0b34a338a98b03"
         }
 		      timeout(time: 2, unit: 'HOURS') {
            script {
@@ -94,12 +94,12 @@ pipeline {
            
               stage(' Rename and move Build To Perticuler Folder '){
                 steps {
-                   sh 'mv /var/lib/jenkins/workspace/mine-project/target/jenkins-git-integration.war   /var/lib/jenkins/workspace/mine-project/epps-smartERP.war'
-                  sh 'chmod -R 777 /var/lib/jenkins/workspace/mine-project/epps-smartERP.war'
+                   sh 'mv /var/lib/jenkins/workspace/devsecops-pro/target/jenkins-git-integration.war   /var/lib/jenkins/workspace/devsecops-pro/epps-smartERP.war'
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/devsecops-pro/epps-smartERP.war'
                   
-                  sh 'chmod -R 777 /var/lib/jenkins/workspace/mine-project/Dockerfile'
-                  sh 'chmod -R 777 /var/lib/jenkins/workspace/mine-project/shell.sh'
-                  sh 'chown jenkins:jenkins  /var/lib/jenkins/workspace/mine-project/trivy-docker-image-scan.sh'                
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/devsecops-pro/Dockerfile'
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/devsecops-pro/shell.sh'
+                  sh 'chown jenkins:jenkins  /var/lib/jenkins/workspace/devsecops-pro/trivy-docker-image-scan.sh'                
                  
                                      }
                        }
@@ -122,7 +122,7 @@ pipeline {
  // Building Docker images
     stage('Building image | Upload to Harbor Repo') {
       steps{
-            sh '/var/lib/jenkins/workspace/mine-project/shell.sh'  
+            sh '/var/lib/jenkins/workspace/devsecops-pro/shell.sh'  
     }
       
     }
