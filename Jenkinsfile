@@ -216,23 +216,7 @@ pipeline {
        }
      }
 	    
-	  stage('K8S Deployment - PROD') {
-       steps {
-         parallel(
-           "Deployment": {
-             withKubeConfig([credentialsId: 'kubeconfig']) {
-              sh "sed -i 's#replace#${imageName}#g' k8s_PROD-deployment_service.yaml"
-               sh "kubectl -n prod apply -f k8s_PROD-deployment_service.yaml"
-             }
-           },
-           "Rollout Status": {
-             withKubeConfig([credentialsId: 'kubeconfig']) {
-               sh "bash k8s-PROD-deployment-rollout-status.sh"
-             }
-           }
-         )
-       }
-     }  
+	  
 	     stage('Jmeter-Test') {
        steps {
                 sh "sh /var/lib/jenkins/workspace/mine-project/apache-jmeter-5.5/bin/jmeter.sh  -Jjmeter.save.saveservice.output_format=xml -n -t /var/lib/jenkins/workspace/mine-project/apache-jmeter-5.5/bin/jmeter-integration-server-20.jmx -l /var/lib/jenkins/workspace/mine-project/apache-jmeter-5.5/bin/JenkinsJmeter.jtl"
