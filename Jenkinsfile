@@ -127,52 +127,24 @@ pipeline {
       
     }
     
-    
-	
-    
-    
-    stage('K8S Deployment - DEV') {
+    stage('Vulnerability Scan - Kubernetes') {
        steps {
          parallel(
-          "Deployment": {
-            withKubeConfig([credentialsId: 'kubeconfig']) {
-              sh "sed -i 's#replace#${imageName}#g' blue.yml"
-	      sh "kubectl -n default apply -f blue.yml"
-             }
-           },
-         "Rollout Status": {
-            withKubeConfig([credentialsId: 'kubeconfig']) {
-             sh "bash k8s-deployment-rollout-status.sh"
-             }
+           "OPA Scan": {
+             sh 'docker run --rm -v $(pwd):/project openpolicyagent/conftest test --policy opa-k8s-security.rego blue.yml'
+         },
+          "Kubesec Scan": {
+            sh "bash kubesec-scan.sh"
+          },
+           "Trivy Scan": {
+             sh "bash trivy-k8s-scan.sh"
            }
         )
-       }
-     }
-	    
-	   stage('Integration Tests - DEV') {
-         steps {
-         script {
-          try {
-            withKubeConfig([credentialsId: 'kubeconfig']) {
-               sh "bash integration-test.sh"
-             }
-            } catch (e) {
-             withKubeConfig([credentialsId: 'kubeconfig']) {
-               sh "kubectl -n default rollout undo deploy ${deploymentName}"
-             }
-             throw e
-           }
-         }
-       }
-     }  
-	    
-	 stage('OWASP ZAP - DAST') {
-       steps {
-         withKubeConfig([credentialsId: 'kubeconfig']) {
-           sh 'bash zap.sh'
-         }
-       }
-     }  
+      }
+    }
+	
+    
+   
 	    
 	    stage('Prompte to PROD?') {
        steps {
