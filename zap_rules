@@ -3,7 +3,16 @@
 # Active scan rules set to IGNORE will not be run which will speed up the scan
 # Only the rule identifiers are used - the names are just for info
 # You can add your own messages to each rule by appending them after a tab on each line.
-100001	IGNORE	http://192.168.163.101:30010/
+100001   IGNORE    http://192.168.163.101:30010/v3/api-docs
+100001 IGNORE	http://192.168.163.101:30010/4787710276302392255
+100001 IGNORE	http://192.168.163.101:30010/v3/3249882177969027424
+100001 IGNORE	http://192.168.163.101:30010/v3
+100001	IGNORE http://192.168.163.101:30010/WEB-INF/web.xml
+100000   IGNORE    http://192.168.163.101:30010/EQOK8
+100000	IGNORE http://192.168.163.101:30010/v3HF2WL
+100000	IGNORE http://192.168.163.101:30010/v3/api-docsGQGPU
+10009 IGNORE http://192.168.163.101:30010/v3/api-docs
+10038  IGNORE http://192.168.163.101:30010/v3/api-docs
 #100000	IGNORE	http://192.168.152.131:30010/
 
  
