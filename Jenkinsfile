@@ -144,21 +144,13 @@ pipeline {
     }
 	stage('K8S Deployment - DEV') {
        steps {
-         parallel(
-          "Deployment": {
             withKubeConfig([credentialsId: 'kubeconfig']) {
               sh "sed -i 's#replace#${imageName}#g' blue.yml"
 	      sh "kubectl -n default apply -f blue.yml"
              }
-           },
-         "Rollout Status": {
-            withKubeConfig([credentialsId: 'kubeconfig']) {
-             sh "bash k8s-deployment-rollout-status.sh"
-             }
            }
-        )
-       }
-     }
+		   
+		  } 
 	    
 	   stage('Integration Tests - DEV') {
          steps {
