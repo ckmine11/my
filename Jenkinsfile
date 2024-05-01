@@ -268,7 +268,7 @@ pipeline {
                       always{
               dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
               publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'HTML Report', reportTitles: 'OWASP ZAP HTPML REPORT', useWrapperFileDirectly: true])
-             perfReport filterRegex: '', showTrendGraphs: true, sourceDataFiles: '/var/lib/jenkins/workspace/devsecops-pro/apache-jmeter-5.6.3/bin/Jenkinsjmeter.jtl'
+            
        }
    }
 
