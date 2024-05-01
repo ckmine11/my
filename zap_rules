@@ -4,7 +4,7 @@
 # Only the rule identifiers are used - the names are just for info
 # You can add your own messages to each rule by appending them after a tab on each line.
 #100001  IGNORE  http://192.168.163.101:30010/v3/api-docs
-100000  IGNORE  http://192.168.163.101:30010/
+#100000  IGNORE  http://192.168.163.101:30010/
 #100000	IGNORE	http://192.168.152.131:30010/
 
  
