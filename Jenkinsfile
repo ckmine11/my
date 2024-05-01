@@ -217,14 +217,6 @@ pipeline {
      }
 	    
 	  
-	     stage('Jmeter-Test') {
-       steps {
-                sh "sh /var/lib/jenkins/workspace/devsecops-pro/apache-jmeter-5.6.3/bin/jmeter.sh  -Jjmeter.save.saveservice.output_format=xml -n -t /var/lib/jenkins/workspace/devsecops-pro/apache-jmeter-5.6.3/bin/jemeter-reg.jmx -l /var/lib/jenkins/workspace/devsecops-pro/apache-jmeter-5.6.3/bin/Jenkinsjmeter.jtl"
-         }
-       }
-
-
-
 	 stage('K8S Deployment - PROD') {
          steps {
           parallel(
