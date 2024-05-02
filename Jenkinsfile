@@ -186,7 +186,12 @@ pipeline {
       // }
     // }  	
     
-   
+        stage('Jmeter-Test') {
+       steps {
+                sh "sh /var/lib/jenkins/workspace/apache-jmeter-5.6.3/bin/jmeter.sh  -Jjmeter.save.saveservice.output_format=xml -n -t /var/lib/jenkins/workspace/apache-jmeter-5.6.3/bin/jemeter-reg.jmx -l /var/lib/jenkins/workspace/apache-jmeter-5.6.3/bin/Jenkinsjmeter.jtl"
+         }
+       }
+
 	    
 	    stage('Prompte to PROD?') {
        steps {
@@ -260,7 +265,7 @@ pipeline {
                       always{
               dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
               publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'HTML Report', reportTitles: 'OWASP ZAP HTPML REPORT', useWrapperFileDirectly: true])
-             
+              perfReport errorFailedThreshold: 0, errorUnstableThreshold: 0, filterRegex: '', persistConstraintLog: true, showTrendGraphs: true, sourceDataFiles: '/var/lib/jenkins/workspace/apache-jmeter-5.6.3/bin/Jenkinsjmeter.jtl'
        }
    }
 
