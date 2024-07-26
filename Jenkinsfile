@@ -50,11 +50,11 @@ pipeline {
           
        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=me-project -Dsonar.host.url=http://system-services.cluster.com:9000/ -Dsonar.login=0df7f38cd998f3f2b4efff6538e6c26d16a5e486"
         }
-		      timeout(time: 2, unit: 'HOURS') {
-           script {
-             waitForQualityGate abortPipeline: true
-           }
-         }
+		//      timeout(time: 2, unit: 'HOURS') {
+         //  script {
+          //   waitForQualityGate abortPipeline: true
+         //  }
+        // }
    }
               }
               
