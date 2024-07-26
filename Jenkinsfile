@@ -28,7 +28,7 @@ pipeline {
         stage('Build Now') { 
             steps { 
               
-                  dir("/var/lib/jenkins/workspace/devsecops-pro") {
+                  dir("/var/lib/jenkins/workspace/sample-project") {
                     sh 'mvn -version'
                     sh 'mvn clean install'
                       
@@ -94,12 +94,12 @@ pipeline {
            
               stage(' Rename and move Build To Perticuler Folder '){
                 steps {
-                   sh 'mv /var/lib/jenkins/workspace/devsecops-pro/target/jenkins-git-integration.war   /var/lib/jenkins/workspace/devsecops-pro/epps-smartERP.war'
-                  sh 'chmod -R 777 /var/lib/jenkins/workspace/devsecops-pro/epps-smartERP.war'
+                   sh 'mv /var/lib/jenkins/workspace/sample-project/target/jenkins-git-integration.war   /var/lib/jenkins/workspace/sample-project/epps-smartERP.war'
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/sample-project/epps-smartERP.war'
                   
-                  sh 'chmod -R 777 /var/lib/jenkins/workspace/devsecops-pro/Dockerfile'
-                  sh 'chmod -R 777 /var/lib/jenkins/workspace/devsecops-pro/shell.sh'
-                  sh 'chown jenkins:jenkins  /var/lib/jenkins/workspace/devsecops-pro/trivy-docker-image-scan.sh'                
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/sample-project/Dockerfile'
+                  sh 'chmod -R 777 /var/lib/jenkins/workspace/sample-project/shell.sh'
+                  sh 'chown jenkins:jenkins  /var/lib/jenkins/workspace/sample-project/trivy-docker-image-scan.sh'                
                  
                                      }
                        }
@@ -122,7 +122,7 @@ pipeline {
  // Building Docker images
     stage('Building image | Upload to Harbor Repo') {
       steps{
-            sh '/var/lib/jenkins/workspace/devsecops-pro/shell.sh'  
+            sh '/var/lib/jenkins/workspace/sample-project/shell.sh'  
     }
       
     }
