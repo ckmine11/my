@@ -1,14 +1,14 @@
 pipeline { 
          agent any
            environment {
-        jenkins_server_url = "http://192.168.163.102:8080"
+        jenkins_server_url = "http://192.168.5.150:8080"
         notification_channel = 'devops'
         slack_url = 'https://hooks.slack.com/services/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'
         deploymentName = "web-server"
     containerName = "web-server"
     serviceName = "web-server"
-    imageName = "master.dns.com/devsecops/$JOB_NAME:v1.$BUILD_ID"
-     applicationURL="http://192.168.163.101"
+    imageName = "harbor.cluster.com/sample-project/$JOB_NAME:v1.$BUILD_ID"
+     applicationURL="http://192.168.5.60"
     applicationURI="epps-smartERP/" 		   
 		   
         
