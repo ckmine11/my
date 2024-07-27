@@ -8,4 +8,4 @@ sudo su - jenkins -s/bin/bash
  docker image tag $JOB_NAME:v1.$BUILD_ID harbor.cluster.com/sample-project/$JOB_NAME:latest
  docker image push harbor.cluster.com/sample-project/$JOB_NAME:v1.$BUILD_ID
  docker  push harbor.cluster.com/sample-project/$JOB_NAME:latest
- docker image rmi $JOB_NAME:v1.$BUILD_ID  harbor.cluster.com/sample-project/$JOB_NAME:v1.$BUILD_ID   harbor.cluster.com/sample-project/$JOB_NAME:latest 
+ #docker image rmi $JOB_NAME:v1.$BUILD_ID  harbor.cluster.com/sample-project/$JOB_NAME:v1.$BUILD_ID   harbor.cluster.com/sample-project/$JOB_NAME:latest 
