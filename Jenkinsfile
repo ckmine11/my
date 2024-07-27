@@ -61,7 +61,7 @@ pipeline {
               
         stage('Synk-Test') {
       steps {
-	      snykSecurity failOnError: false, failOnIssues: false, projectName: 'sample-project', snykInstallation: 'snyk', snykTokenId: 'snyk'
+	      snykSecurity failOnError: false, failOnIssues: false, projectName: 'sample-project', snykInstallation: 'snyk', snykTokenId: 'snyk-token'
        // echo 'Testing...'
       //  snykSecurity(
        //  snykInstallation: 'snyk',
