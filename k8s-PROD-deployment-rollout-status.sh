@@ -1,5 +1,5 @@
 #!/bin/bash
-sleep 50s
+sleep 90s
 
 if [[ $(kubectl -n prod rollout status deploy ${deploymentName} --timeout 5s) != *"successfully rolled out"* ]]; 
 then     
