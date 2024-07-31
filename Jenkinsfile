@@ -99,6 +99,7 @@ pipeline {
                   
                   sh 'chmod -R 777 /var/lib/jenkins/workspace/sample-project/Dockerfile'
                   sh 'chmod -R 777 /var/lib/jenkins/workspace/sample-project/shell.sh'
+		  sh 'chmod -R 777 /var/lib/jenkins/workspace/sample-project/zap.sh'
                   sh 'chown jenkins:jenkins  /var/lib/jenkins/workspace/sample-project/trivy-docker-image-scan.sh'                
                  
                                      }
